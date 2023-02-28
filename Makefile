@@ -27,7 +27,9 @@ MICROSERVICES=cmd/edgex-ui-server/edgex-ui-server
 DOCKERS=docker_edgex_ui_go
 .PHONY: $(DOCKERS)
 
-VERSION=$(shell cat ./VERSION 2>/dev/null || echo 0.0.0)
+# VERSION=$(shell cat ./VERSION 2>/dev/null || echo 0.0.0)
+
+VERSION:=3.0.0
 
 GOFLAGS=-ldflags "-X github.com/edgexfoundry/edgex-ui-go.Version=$(VERSION)"
 GOTESTFLAGS?=-race
@@ -78,6 +80,7 @@ docker_edgex_ui_go:
 	docker build --label "git_sha=$(GIT_SHA)" \
 	-t edgexfoundry/edgex-ui:$(GIT_SHA) \
 	-t edgexfoundry/edgex-ui:$(VERSION)-dev \
+	-t cr.loongnix.cn/edgexfoundry/edgex-ui:$(VERSION) \
 	.
 
 vendor:

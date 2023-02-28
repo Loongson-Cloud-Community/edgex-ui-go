@@ -4,7 +4,7 @@ LogLevel = "INFO"
 
 [Service]
 HealthCheckInterval = "10s"
-Host = "localhost"
+Host = "0.0.0.0"
 ServerBindAddr = ""  # blank value defaults to Service.Host value
 Port = 4000
 StartupMsg = "edgex-ui-go service started"
